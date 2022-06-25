@@ -16,6 +16,7 @@ var loadState = {
         game.load.spritesheet('crab', 'img/crab.png', 19, 19)
         game.load.spritesheet('duda', 'img/dudaSprite.png', 32, 42)
         game.load.spritesheet('robotinho', 'img/robotinho.png', 32, 42)
+        game.load.spritesheet('plantinha', 'img/plantinha.png', 50, 50)
 
         game.load.audio('getcrab', 'sfx/getitem.ogg')
         game.load.audio('losecrab', 'sfx/loseEnemy.wav')

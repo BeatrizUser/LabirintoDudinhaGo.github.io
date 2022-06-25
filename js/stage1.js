@@ -15,26 +15,16 @@ var stage1State = {
         game.add.sprite(0,0,'bg')
 
         this.maze = [
-            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
-            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-            [1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-            [1,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,0,1],
-            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-            [1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-            [1,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0,0,0,0,1],
-            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-            [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1],
-            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            [1,0,1,3,0,1,0,1,0,0,1,3,0,0,1],
+            [1,0,0,0,0,1,0,1,0,0,1,0,1,0,1],
+            [1,0,1,0,1,1,0,1,1,0,0,0,1,0,1],
+            [1,0,1,0,0,1,0,1,3,0,1,1,1,0,1],
+            [1,1,1,2,1,1,0,1,1,0,1,0,0,0,1],
+            [1,0,0,0,0,0,0,0,0,0,0,0,1,1,1],
+            [1,0,1,1,1,1,0,1,1,1,1,0,1,3,1],
+            [1,0,0,0,3,1,0,0,0,0,0,0,0,0,1],
+            [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
         ]
 
         this.blocks = game.add.group()
@@ -46,17 +36,17 @@ var stage1State = {
             for(var col in this.maze[row]){
                 var tile = this.maze[row][col]
 
-                var gameSizeScale = 25
+                var gameSizeScale = 50
 
                 var x = col * gameSizeScale
                 var y = row * gameSizeScale
 
                 if(tile === 1){
-                    var block = this.blocks.create(x, y, 'flowerwall')
+                    var block = this.blocks.create(x, y, 'plantinha')
                         block.body.immovable = true
                 }
                 if(tile === 2){
-                    this.player = game.add.sprite(x + 12.5,y + 12.5,'duda')
+                    this.player = game.add.sprite(x + 25,y + 25,'duda')
                     this.player.anchor.set(.5)
                     game.physics.arcade.enable(this.player)
                     this.player.animations.add('goLeft',[0,1,2,3],12, true)
@@ -66,15 +56,15 @@ var stage1State = {
                 }
                 if(tile === 3){
                     var position = {
-                        x: x + 12.5,
-                        y: y + 12.5,
+                        x: x + 25,
+                        y: y + 25,
                     }
                     this.crabPositions.push(position)
                 }
             }
         }
         //robotinho(inimigo)
-        this.enemy = game.add.sprite(100,100,'robotinho')
+        this.enemy = game.add.sprite(75,75,'robotinho')
         this.enemy.anchor.set(.5)
         game.physics.arcade.enable(this.enemy)
         this.enemy.animations.add('goLeft',[0,1,2,3],12, true)
@@ -108,7 +98,6 @@ var stage1State = {
         this.moveEnemy()
         this.movePlayer()
     },
-    
     loseCrab: function(){
         this.sndLoseCrab.play();
 
@@ -137,25 +126,21 @@ var stage1State = {
     },
 
     moveEnemy: function(){
-        if(Math.floor(this.enemy.x -12.5)%50 === 0 && Math.floor(this.enemy.y-12.5)%50 === 0 ){
+        if(Math.floor(this.enemy.x -25)%50 === 0 && Math.floor(this.enemy.y -25)%50 === 0 ){
             var enemyCol = Math.floor(this.enemy.x/50)
             var enemyRow = Math.floor(this.enemy.y/50)
             var validPath = []
 
             if(this.maze[enemyRow][enemyCol-1] !== 1 && this.enemy.direction !== 'RIGHT'){
-                console.log(this.maze[enemyRow][enemyCol-1])
                 validPath.push('LEFT')
             }
             if(this.maze[enemyRow][enemyCol+1] !== 1 && this.enemy.direction !== 'LEFT'){
-                console.log(this.maze[enemyRow][enemyCol+1])
                 validPath.push('RIGHT')
             }
             if(this.maze[enemyRow-1][enemyCol] !== 1 && this.enemy.direction !== 'DOWN'){
-                console.log(this.maze[enemyRow-1][enemyCol])
                 validPath.push('UP')
             }
             if(this.maze[enemyRow+1][enemyCol] !== 1 && this.enemy.direction !== 'UP'){
-                console.log(this.maze[enemyRow+1][enemyCol])
                 validPath.push('DOWN')
             }
 
@@ -185,45 +170,42 @@ var stage1State = {
         this.player.body.velocity.x = 0
         this.player.body.velocity.y = 0
 
-        var speed = 100
 
-        
         if(this.controls.left.isDown && !this.controls.right.isDown){
-            this.player.body.velocity.x = -speed;
+            this.player.body.velocity.x = -100;
             this.player.direction = "left"
         } else
         if(this.controls.right.isDown && !this.controls.left.isDown){
-            this.player.body.velocity.x = speed;
+            this.player.body.velocity.x = 100;
             this.player.direction = "right"
         } else
         if(this.controls.up.isDown && !this.controls.down.isDown){
-            this.player.body.velocity.y = -speed;
+            this.player.body.velocity.y = -100;
             this.player.direction = "up"
         } else
         if(this.controls.down.isDown && !this.controls.up.isDown){
-            this.player.body.velocity.y = speed;
+            this.player.body.velocity.y = 100;
             this.player.direction = "down"
         }
         switch(this.player.direction){
             case "left":
                 this.player.animations.play('goLeft')
                 break
-                case "right":
-                    this.player.animations.play('goRight')
-                    break
-                    case "up":
-                        this.player.animations.play('goUp')
-                        break
-                        case "down":
-                            this.player.animations.play('goDown')
+            case "right":
+                this.player.animations.play('goRight')
                 break
-            }
-            
-            if(this.player.body.velocity.x === 0 && this.player.body.velocity.y === 0){
-                this.player.animations.stop()
-            }
-            
-        },
+            case "up":
+                this.player.animations.play('goUp')
+                break
+            case "down":
+                this.player.animations.play('goDown')
+                break
+        }
+
+        if(this.player.body.velocity.x === 0 && this.player.body.velocity.y === 0){
+            this.player.animations.stop()
+        }
+    },
 
     newPosition: function(){
         var pos = this.crabPositions[Math.floor(Math.random()*this.crabPositions.length)]
