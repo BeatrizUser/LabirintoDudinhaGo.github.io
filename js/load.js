@@ -11,7 +11,7 @@ var loadState = {
         game.load.image('part', 'img/part.png')
         game.load.image('bg', 'img/bg.png')
         game.load.image('woodfloor', 'img/woodfloor.png')
-        game.load.image('flowerwall', 'img/flowerwall.png')
+        game.load.image('flowerwall', 'img/flowerwall2.png', 25, 25)
 
         game.load.spritesheet('crab', 'img/crab.png', 19, 19)
         game.load.spritesheet('duda', 'img/dudaSprite.png', 32, 42)
